@@ -1,28 +1,23 @@
 #include <iostream>
-#include <string>
-#include <cctype>
-#include <stack>
+#include <map>
 
 //задание 1418
 
-int main() {
-    std::string s;
-    std::getline(std::cin, s);
-    std::stack<int> stack;
-    for (char c : s)
-        if (isdigit(c))
-            stack.push(c - '0');
-        else if (c != ' ') {
-            const int a = stack.top();
-            stack.pop();
-            const int b = stack.top();
-            stack.pop();
-            if (c == '+')
-                stack.push(a + b);
-            else if (c == '-')
-                stack.push(b - a);
-            else
-                stack.push(a * b);
-        }
+int main()
+{
+    int N = 0;
+    std::cin >> N;
+    std::map<int, bool> array;
+
+    int number;
+    for (int i=0; i < N; ++i)
+    {
+        std::cin >> number;
+        array[number] = true;
+    }
+
+    std::cout << array.size();
+
+    system("pause");
     return 0;
 }
